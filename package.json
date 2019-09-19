@@ -1,0 +1,22 @@
+{
+  "name": "didactic-parakeet",
+  "version": "1.0.0",
+  "description": "A platform for all the real book lovers",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lothindir/didactic-parakeet.git"
+  },
+  "author": "jonfriedli & framonti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lothindir/didactic-parakeet/issues"
+  },
+  "homepage": "https://github.com/Lothindir/didactic-parakeet#readme"
+}
