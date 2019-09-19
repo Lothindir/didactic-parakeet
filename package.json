@@ -1,22 +1,32 @@
 {
   "name": "didactic-parakeet",
+  "description": "The platform for all the real book lovers",
   "version": "1.0.0",
-  "description": "A platform for all the real book lovers",
   "main": "index.js",
   "directories": {
     "test": "tests"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lothindir/didactic-parakeet.git"
   },
   "author": "jonfriedli & framonti",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Lothindir/didactic-parakeet/issues"
   },
-  "homepage": "https://github.com/Lothindir/didactic-parakeet#readme"
+  "homepage": "https://github.com/Lothindir/didactic-parakeet#readme",
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.28.0",
+    "core-js": "^3.0.0",
+    "regenerator-runtime": "^0.13.2",
+    "webpack-notifier": "^1.6.0"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  }
 }
