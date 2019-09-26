@@ -8,7 +8,11 @@
         {% endblock %}
     </head>
     <body class="font-body">
+        {# REMETTRE LE ".twig" après le ".html" dans header nav et footer #}
+        {% include 'partials/header.html' %}
+        {% include 'partials/nav.html' %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+        {% include 'partials/footer.html' %}
     </body>
 </html>
