@@ -28,28 +28,6 @@ class Reviews
      */
     private $Rating;
 
-    public function getBookId(): ?Book
-    {
-        return $this->bookId;
-    }
-
-    public function getUserId(): ?User
-    {
-        return $this->UserId;
-    }
-
-    public function getRatingId(): ?Rating
-    {
-        return $this->RatingId;
-    }
-
-    public function setRatingId(?Rating $RatingId): self
-    {
-        $this->RatingId = $RatingId;
-
-        return $this;
-    }
-
     public function getRating(): ?float
     {
         return $this->Rating;
@@ -57,9 +35,13 @@ class Reviews
 
     public function setRating(float $Rating): self
     {
-        $this->Rating = $Rating;
+        if($Rating >= 1 && $Rating <= 5 && fmod($Rating, 0.5) === 0) {
+            $this->Rating = $Rating;
+            
+            return $this;
+        }
 
-        return $this;
+        throw "Error";
     }
 
     public function getBook(): ?Book
