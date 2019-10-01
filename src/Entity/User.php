@@ -34,13 +34,19 @@ class User
     private $HashedPassword;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Reviews", mappedBy="UserId", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="UserId", orphanRemoval=true)
      */
     private $reviews;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="User", orphanRemoval=true)
+     */
+    private $books;
 
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
+        $this->books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,14 +91,14 @@ class User
     }
 
     /**
-     * @return Collection|Reviews[]
+     * @return Collection|Review[]
      */
     public function getReviews(): Collection
     {
         return $this->reviews;
     }
 
-    public function addReview(Reviews $review): self
+    public function addReview(Review $review): self
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews[] = $review;
@@ -102,13 +108,44 @@ class User
         return $this;
     }
 
-    public function removeReview(Reviews $review): self
+    public function removeReview(Review $review): self
     {
         if ($this->reviews->contains($review)) {
             $this->reviews->removeElement($review);
             // set the owning side to null (unless already changed)
             if ($review->getUserId() === $this) {
                 $review->setUserId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Book[]
+     */
+    public function getBooks(): Collection
+    {
+        return $this->books;
+    }
+
+    public function addBook(Book $book): self
+    {
+        if (!$this->books->contains($book)) {
+            $this->books[] = $book;
+            $book->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBook(Book $book): self
+    {
+        if ($this->books->contains($book)) {
+            $this->books->removeElement($book);
+            // set the owning side to null (unless already changed)
+            if ($book->getUser() === $this) {
+                $book->setUser(null);
             }
         }
 

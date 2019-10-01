@@ -65,9 +65,15 @@ class Book
     private $CoverImage;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Reviews", mappedBy="bookId", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="bookId", orphanRemoval=true)
      */
     private $reviews;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="books")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $User;
 
     public function __construct()
     {
@@ -188,14 +194,14 @@ class Book
     }
 
     /**
-     * @return Collection|Reviews[]
+     * @return Collection|Review[]
      */
     public function getReviews(): Collection
     {
         return $this->reviews;
     }
 
-    public function addReview(Reviews $review): self
+    public function addReview(Review $review): self
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews[] = $review;
@@ -205,7 +211,7 @@ class Book
         return $this;
     }
 
-    public function removeReview(Reviews $review): self
+    public function removeReview(Review $review): self
     {
         if ($this->reviews->contains($review)) {
             $this->reviews->removeElement($review);
@@ -214,6 +220,18 @@ class Book
                 $review->setBookId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
 
         return $this;
     }

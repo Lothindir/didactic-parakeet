@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ReviewsRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ReviewRepository")
  */
-class Reviews
+class Review
 {
     /**
      * @ORM\Id()
@@ -35,13 +35,9 @@ class Reviews
 
     public function setRating(float $Rating): self
     {
-        if($Rating >= 1 && $Rating <= 5 && fmod($Rating, 0.5) === 0) {
-            $this->Rating = $Rating;
-            
-            return $this;
-        }
+        $this->Rating = $Rating;
 
-        throw "Error";
+        return $this;
     }
 
     public function getBook(): ?Book
