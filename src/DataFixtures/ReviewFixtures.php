@@ -11,12 +11,23 @@ class ReviewFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        for ($i = 0; $i < 50; $i++) {
+        $reviewsDone = [];
+
+        for ($i = 0; $i < 100; $i++) {
             $review = new Review();
-            $review->setUser($this->getReference('User'.rand(0,19)));
-            $review->setBook($this->getReference('Title'.rand(0,49)));
+
+            do{
+                $review->setUser($this->getReference('User'.rand(0,19)));
+                $review->setBook($this->getReference('Book'.rand(0,49)));
+            }while(count(array_filter($reviewsDone, function($v) use($review)
+            {
+                return $v->getBook()->getId() == $review->getBook()->getId() && 
+                       $v->getUser()->getId() == $review->getUser()->getId();
+            })) !== 0);
+
             $review->setRating(rand(1,5));
 
+            $reviewsDone[] = $review;
             $manager->persist($review);
         }
 

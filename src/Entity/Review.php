@@ -14,7 +14,7 @@ class Review
      * @ORM\ManyToOne(targetEntity="App\Entity\Book", inversedBy="reviews")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $book;
+    private $Book;
 
     /**
      * @ORM\Id()
@@ -42,12 +42,12 @@ class Review
 
     public function getBook(): ?Book
     {
-        return $this->book;
+        return $this->Book;
     }
 
-    public function setBook(?Book $book): self
+    public function setBook(?Book $Book): self
     {
-        $this->book = $book;
+        $this->Book = $Book;
 
         return $this;
     }
