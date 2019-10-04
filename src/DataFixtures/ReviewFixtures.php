@@ -2,7 +2,9 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Book;
 use App\Entity\Review;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -15,16 +17,20 @@ class ReviewFixtures extends Fixture implements DependentFixtureInterface
 
         for ($i = 0; $i < 1000; $i++) {
             $review = new Review();
+            $user = new User();
+            $book = new Book();
 
             do{
-                $review->setUser($this->getReference('User'.rand(0,19)));
-                $review->setBook($this->getReference('Book'.rand(0,49)));
-            }while(count(array_filter($reviewsDone, function($v) use($review)
+                $user = $this->getReference('User'.rand(0,19));
+                $book = $this->getReference('Book'.rand(0,49));
+            }while(count(array_filter($reviewsDone, function($v) use($book, $user)
             {
-                return $v->getBook()->getId() == $review->getBook()->getId() && 
-                       $v->getUser()->getId() == $review->getUser()->getId();
+                return $v->getBook()->getId() == $book->getId() && 
+                       $v->getUser()->getId() == $user->getId();
             })) !== 0);
 
+            $user->addReview($review);
+            $book->addReview($review);
             $review->setRating(rand(1,5));
 
             $reviewsDone[] = $review;

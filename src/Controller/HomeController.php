@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Book;
+use App\Entity\Review;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
 
 class HomeController extends AbstractController
 {
@@ -18,6 +18,12 @@ class HomeController extends AbstractController
             ->getRepository(Book::class)
             ->getLastReleased();
 
+        foreach ($books as $key => $book) {
+            dump($this->getDoctrine()
+                    ->getRepository(Book::class)
+                    ->getAllReviews($book)
+                );
+        }
         dump($books);
         die();
 

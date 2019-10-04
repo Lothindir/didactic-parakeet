@@ -65,7 +65,7 @@ class Book
     private $CoverImage;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="bookId", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="Book", orphanRemoval=true)
      */
     private $reviews;
 
@@ -205,7 +205,7 @@ class Book
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews[] = $review;
-            $review->setBookId($this);
+            $review->setBook($this);
         }
 
         return $this;
@@ -216,8 +216,8 @@ class Book
         if ($this->reviews->contains($review)) {
             $this->reviews->removeElement($review);
             // set the owning side to null (unless already changed)
-            if ($review->getBookId() === $this) {
-                $review->setBookId(null);
+            if ($review->getBook() === $this) {
+                $review->setBook(null);
             }
         }
 

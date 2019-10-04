@@ -34,7 +34,7 @@ class User
     private $HashedPassword;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="UserId", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="User", orphanRemoval=true)
      */
     private $reviews;
 
@@ -102,7 +102,7 @@ class User
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews[] = $review;
-            $review->setUserId($this);
+            $review->setUser($this);
         }
 
         return $this;
@@ -113,8 +113,8 @@ class User
         if ($this->reviews->contains($review)) {
             $this->reviews->removeElement($review);
             // set the owning side to null (unless already changed)
-            if ($review->getUserId() === $this) {
-                $review->setUserId(null);
+            if ($review->getUser() === $this) {
+                $review->setUser(null);
             }
         }
 

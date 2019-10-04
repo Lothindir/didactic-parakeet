@@ -28,6 +28,18 @@ class BookRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function getAllReviews($Book)
+    {
+        return $this->createQueryBuilder('r')
+            ->from('Review', 'r')
+            ->join('r.Book', 'b')
+            ->addSelect('b')
+            ->andWhere('b.Id = :id')
+            ->setParameter('id', $Book->getId())
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Book[] Returns an array of Book objects
     //  */
