@@ -22,7 +22,7 @@ class BookRepository extends ServiceEntityRepository
     public function getLastReleased(int $limit = 5)
     {
         return $this->createQueryBuilder('b')
-            ->orderBy('b.release_date', 'ASC')
+            ->orderBy('b.ReleaseDate', 'ASC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
