@@ -28,44 +28,25 @@ class BookRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function getAllReviews($Book)
+    public function getLastAdded(int $limit = 5)
     {
-        return $this->createQueryBuilder('r')
-            ->from('Review', 'r')
-            ->join('r.Book', 'b')
-            ->addSelect('b')
-            ->andWhere('b.Id = :id')
-            ->setParameter('id', $Book->getId())
+        return $this->createQueryBuilder('b')
+            ->orderBy('b.AddedDate', 'ASC')
+            ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
     }
 
-    // /**
-    //  * @return Book[] Returns an array of Book objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function getAverageRating($Book)
     {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
+        $qb = $this->createQueryBuilder('b');
+        return $qb
+            ->add('select', $qb->expr()->avg('r.Rating'))
+            ->from('App\Entity\Review', 'r')
+            ->where('r.Book = :id')
+            ->setParameter('id', $Book->getId())
             ->getQuery()
-            ->getResult()
+            ->getSingleScalarResult()
         ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Book
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

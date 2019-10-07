@@ -19,32 +19,29 @@ class UserRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function getTotalReviewsDone($User)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $qb = $this->createQueryBuilder('u');
 
-    /*
-    public function findOneBySomeField($value): ?User
-    {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
+        return $qb->add('select', $qb->expr()->count('r.Rating'))
+            ->from('App\Entity\Review', 'r')
+            ->where('r.User = :id')
+            ->setParameter('id', $User)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getSingleScalarResult()
         ;
     }
-    */
+
+    public function getTotalBooksProposed($User)
+    {
+        $qb = $this->createQueryBuilder('u');
+
+        return $qb->add('select', $qb->expr()->count('b.id'))
+            ->from('App\Entity\Book', 'b')
+            ->where('b.User = :id')
+            ->setParameter('id', $User)
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
 }
