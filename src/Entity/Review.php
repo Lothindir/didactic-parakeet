@@ -12,14 +12,14 @@ class Review
     /**
      * @ORM\Id()
      * @ORM\ManyToOne(targetEntity="App\Entity\Book", inversedBy="reviews")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="book_id", referencedColumnName="id")
      */
     private $Book;
 
     /**
      * @ORM\Id()
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="reviews")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $User;
 

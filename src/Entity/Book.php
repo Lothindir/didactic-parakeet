@@ -14,7 +14,7 @@ class Book
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="id", type="integer")
      */
     private $id;
 
@@ -25,7 +25,7 @@ class Book
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="books")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $Category;
 
@@ -55,6 +55,11 @@ class Book
     private $Editor;
 
     /**
+     * @ORM\Column(type="smallint")
+     */
+    private $NumberPages;
+
+    /**
      * @ORM\Column(type="date")
      */
     private $ReleaseDate;
@@ -71,9 +76,14 @@ class Book
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="books")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $User;
+
+    /**
+     * @ORM\Column(type="datetimetz")
+     */
+    private $AddedDate;
 
     public function __construct()
     {
@@ -232,6 +242,30 @@ class Book
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    public function getAddedDate(): ?\DateTimeInterface
+    {
+        return $this->AddedDate;
+    }
+
+    public function setAddedDate(\DateTimeInterface $AddedDate): self
+    {
+        $this->AddedDate = $AddedDate;
+
+        return $this;
+    }
+
+    public function getNumberPages(): ?int
+    {
+        return $this->NumberPages;
+    }
+
+    public function setNumberPages(int $NumberPages): self
+    {
+        $this->NumberPages = $NumberPages;
 
         return $this;
     }
