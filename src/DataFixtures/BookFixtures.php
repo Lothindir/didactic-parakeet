@@ -28,6 +28,8 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
             $book->setCategory($cat);
             $user = $this->getReference('User'.rand(0,19));
             $book->setUser($user);
+            $book->setAddedDate(new \DateTime());
+            $book->setNumberPages(rand(150, 1350));
 
             $manager->persist($book);
 

@@ -31,7 +31,7 @@ class ReviewFixtures extends Fixture implements DependentFixtureInterface
 
             $user->addReview($review);
             $book->addReview($review);
-            $review->setRating(rand(1,5));
+            $review->setRating(rand(2.5,5));
 
             $reviewsDone[] = $review;
             $manager->persist($review);
