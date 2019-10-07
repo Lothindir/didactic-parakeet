@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Entity\Review;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,15 +15,21 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        $usersRepository = $this->getDoctrine()->getRepository(User::class);
+        $users = $usersRepository->findAll();
+
+        echo '<p><ul>';
+        foreach ($users as $key => $user) {
+            echo '<li>' . $user->getName() . " " . $usersRepository->getTotalBooksProposed($user) . " " . $usersRepository->getTotalReviewsDone($user) .'</li>' . "\r\n";
+        }
+        echo '</ul></p>';
+
         $books = $this->getDoctrine()
             ->getRepository(Book::class)
-            ->getLastReleased();
+            ->getLastAdded(5);
 
         foreach ($books as $key => $book) {
-            dump($this->getDoctrine()
-                    ->getRepository(Book::class)
-                    ->getAllReviews($book)
-                );
+            echo $this->getDoctrine()->getRepository(Book::class)->getAverageRating($book) . "\r\n";
         }
         dump($books);
         die();
