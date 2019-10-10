@@ -4,8 +4,14 @@
 {% endblock %}
 
 {% block body %}
-    <div class="px-4 bg-yellow-parakeet-light pt-4">
+    <div class="px-4 bg-yellow-parakeet-light pt-4 w-full">
         <ul>
+            {% for user in users %}
+            <li>{{ user.Name }}</li>
+            {% endfor %}
+            {% for user in users %}
+            <li>{{ user.Name }}</li>
+            {% endfor %}
             {% for user in users %}
             <li>{{ user.Name }}</li>
             {% endfor %}

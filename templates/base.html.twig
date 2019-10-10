@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class='min-h-screen'>
     <head>
         <meta charset="UTF-8">
         <title>Didactic Parakeet
@@ -13,10 +13,12 @@
     <body class="font-body flex flex-col h-full">
         {% include 'partials/header.html.twig' %}
         {% include 'partials/nav.html.twig' %}
-        <div class="container md:ml-32 lg:ml-64 min-w-full mt-30">
-            {% block body %}{% endblock %}
+        <div class="min-h-screen flex flex-col">
+            <div class="md:ml-32 lg:ml-64 mt-30 flex flex-grow"> 
+                {% block body %}{% endblock %}
+            </div>
+            {% include 'partials/footer.html.twig' %}
         </div>
         {% block javascripts %}{% endblock %}
-        {% include 'partials/footer.html.twig' %}
-    </body>
-</html>
+        </body>
+    </html>
