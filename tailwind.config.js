@@ -36,6 +36,7 @@ module.exports = {
         700: '#c53030',
         800: '#9b2c2c',
         900: '#742a2a',
+        'parakeet': '#C72B36',
       },
       orange: {
         100: '#fffaf0',
@@ -58,6 +59,8 @@ module.exports = {
         700: '#b7791f',
         800: '#975a16',
         900: '#744210',
+        'parakeet': '#FFF300',
+        'parakeet-light': '#FFFA9C',
       },
       green: {
         100: '#f0fff4',
@@ -69,6 +72,7 @@ module.exports = {
         700: '#2f855a',
         800: '#276749',
         900: '#22543d',
+        'parakeet': '#B8DC7C',
       },
       teal: {
         100: '#e6fffa',
@@ -91,6 +95,7 @@ module.exports = {
         700: '#2b6cb0',
         800: '#2c5282',
         900: '#2a4365',
+        'parakeet': '#017CC2',
       },
       indigo: {
         100: '#ebf4ff',
@@ -140,8 +145,10 @@ module.exports = {
       '12': '3rem',
       '16': '4rem',
       '20': '5rem',
+      '22': '5.5rem',
       '24': '6rem',
       '28': '7rem',
+      '30': '7.5rem',
       '32': '8rem',
       '40': '10rem',
       '48': '12rem',

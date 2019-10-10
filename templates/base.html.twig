@@ -2,18 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Didactic Parakeet {% block title %}{% endblock %}</title>
-        <link rel="icon" href="images/logo.ico" />
+        <title>Didactic Parakeet
+            {% block title %}{% endblock %}
+        </title>
+        <link rel="icon" href="images/logo.ico"/>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
-    <body class="font-body">
-        {# REMETTRE LE ".twig" après le ".html" dans header nav et footer #}
-        {% include 'partials/header.html' %}
-        {% include 'partials/nav.html' %}
-        {% block body %}{% endblock %}
+    <body class="font-body flex flex-col h-full">
+        {% include 'partials/header.html.twig' %}
+        {% include 'partials/nav.html.twig' %}
+        <div class="container md:ml-32 lg:ml-64 min-w-full mt-30">
+            {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
-        {% include 'partials/footer.html' %}
+        {% include 'partials/footer.html.twig' %}
     </body>
 </html>

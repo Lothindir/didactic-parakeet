@@ -18,24 +18,26 @@ class HomeController extends AbstractController
         $usersRepository = $this->getDoctrine()->getRepository(User::class);
         $users = $usersRepository->findAll();
 
-        echo '<p><ul>';
-        foreach ($users as $key => $user) {
+        /*echo '<p><ul>';
+        foreach ($users as $user) {
             echo '<li>' . $user->getName() . " " . $usersRepository->getTotalBooksProposed($user) . " " . $usersRepository->getTotalReviewsDone($user) .'</li>' . "\r\n";
         }
-        echo '</ul></p>';
+        echo '</ul></p>';*/
 
         $books = $this->getDoctrine()
             ->getRepository(Book::class)
             ->getLastAdded(5);
 
-        foreach ($books as $key => $book) {
+        /*foreach ($books as $book) {
             echo $this->getDoctrine()->getRepository(Book::class)->getAverageRating($book) . "\r\n";
         }
         dump($books);
-        die();
+        die();*/
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-        ]);
+            'users' => $users,
+            'books' => $books
+         ]);
     }
 }
