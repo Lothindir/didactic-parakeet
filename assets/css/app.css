@@ -5,3 +5,11 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.nav-item {
+    @apply block p-4 bg-red-parakeet;
+}
+
+.nav-item:hover {
+    @apply bg-red-600 text-yellow-parakeet-light;
+}

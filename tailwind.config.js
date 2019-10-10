@@ -73,6 +73,7 @@ module.exports = {
         800: '#276749',
         900: '#22543d',
         'parakeet': '#B8DC7C',
+        'parakeet-dark': '#86C22B',
       },
       teal: {
         100: '#e6fffa',
