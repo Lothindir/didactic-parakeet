@@ -26,6 +26,7 @@ class UserFixtures extends Fixture
             $adminUser,
             'admin'
         ));
+        $adminUser->setRoles(array_merge($adminUser->getRoles(), ['ROLE_ADMIN']));
         $manager->persist($adminUser);
         $this->addReference('ADMIN', $adminUser);
 
