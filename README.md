@@ -2,24 +2,56 @@
 The platform for all the real book lovers
 
 ## Installation
-### php.ini
-Add the following extensions :
+#### Prerequisites
+In order to launch the application you need to install a few tools :
+
+##### Using Chocolatey
+If you have chocolatey installed just run these commands :
+```
+choco install php
+```
+```
+choco install composer
+```
+```
+choco install nodejs
+```
+##### Installing programs
+Install the latest version of php : [php.net](https://www.php.net/downloads.php)
+Install the latest version of composer : [getcomposer.org](https://getcomposer.org/download/)
+Install the latest version of NodeJS : [nodejs.org](https://nodejs.org/en/download/)
+
+#### Setup the repo
+Clone or download the [repository](https://github.com/Lothindir/didactic-parakeet.git). Open the folder with your favorite text editor (VS Code, Atom, PHPStorm, ...).
+Open a terminal window and type
+```
+composer install
+```
+and 
+```
+npm install
+```
+to setup all the required packages.
+
+#### php.ini
+Edit your php.ini file (usually located in ```C:/tools/php*```)
+Uncomment the following extensions :
 -   curl
 -   fileinfo
 -   mysqli
 -   odbc
 -   pdo_mysql
 
-### MySQL
-Start a MySQL server (XAMPP, WampServer, uWamp or other)
+#### MySQL
+Start a MySQL/MariaDB server (XAMPP, WampServer, uWamp or other)
 
 Create a file named ```.env.local``` at the root of the project and write 
 ```
 DATABASE_URL="mysql://user:password@127.0.0.1:3306/didactic_parakeet"
 ``` 
-in it, where ```user``` and ```password``` are the MySQL database user and password.
+where ```user``` and ```password``` are the MySQL database user and password.
 
-### Doctrine
+#### Doctrine
 You'll now need to create, migrate and populate your database.
 Enter the terminal at the root of the project folder and type 
 ```
@@ -35,6 +67,23 @@ If you want to populate the database with placeholders type
 ```
 php bin/console doctrine:fixture:load
 ```
+
+## Run the website
+In order to run the website you'll need to start a few services.
+In a terminal window located at the root of your project type
+```
+symfony server:start
+```
+to start the web server.
+To compile the CSS and JavaScript you'll need to run `webpack` :
+```
+npm run dev
+```
+will compile all the assets for you, or
+```
+npm run watch
+```
+will compile and watch any changes in your files, and re-complies when needed.
 
 ## Roadmap
 #### Fonctionnalités
@@ -53,3 +102,10 @@ php bin/console doctrine:fixture:load
 - [ ]	Une page pour ajouter des livres :
     -    Il faut être connecté.
 - [ ]	Un simple form, avec les doubles checks (client et server)
+- Pages :
+  -  [ ] Homepage
+  -  [ ] Vue générale des livres (classé par ordre alphabétique)
+  -  [ ] Vue par catégorie
+  -  [ ] Vue détaillée par livre
+  -  [ ] Page ajout de livre
+  -  [ ] Vue détaillée utilisateur
