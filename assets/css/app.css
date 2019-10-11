@@ -11,5 +11,5 @@
 }
 
 .nav-item:hover {
-    @apply bg-red-600 text-yellow-parakeet-light;
+    @apply bg-red-600;
 }
