@@ -16,9 +16,9 @@ class UserFixtures extends Fixture
             $faker = Faker\Factory::create('fr_CH');
 
             $user = new User();
-            $user->setName($faker->userName);
+            $user->setUsername($faker->userName);
             $user->setEntryDate($faker->dateTimeBetween('-15 years'));
-            $user->setHashedPassword($faker->sha256);
+            $user->setPassword($faker->sha256);
             $manager->persist($user);
 
             $this->addReference('User'.$i, $user);
