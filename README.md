@@ -113,9 +113,9 @@ will compile and watch any changes in your files, and re-complies when needed.
     -    Il faut être connecté.
 - [ ]	Un simple form, avec les doubles checks (client et server)
 - Pages :
-  -  [ ] Homepage
-  -  [ ] Vue générale des livres (classé par ordre alphabétique)
-  -  [ ] Vue par catégorie
-  -  [ ] Vue détaillée par livre
-  -  [ ] Page ajout de livre
-  -  [ ] Vue détaillée utilisateur
+  -  [ ] Homepage [Everyone]
+  -  [ ] Vue générale des livres (classé par ordre alphabétique) [Everyone]
+  -  [ ] Vue détaillée par livre [Users]
+  -  [ ] Vue par catégorie [Everyone]
+  -  [ ] Page ajout de livre [Users]
+  -  [ ] Vue détaillée utilisateur [Users]
