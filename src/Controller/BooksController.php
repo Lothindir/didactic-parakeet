@@ -33,7 +33,7 @@ class BooksController extends AbstractController
     /**
      * @Route("/categories/{category}", name="category")
      */
-    public function listAllCategories(String $category)
+    public function listBooksByCategory(String $category)
     {
         $categoryRepository = $this->getDoctrine()->getRepository(Category::class);
 
