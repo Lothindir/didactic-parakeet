@@ -7,6 +7,7 @@ use Proxies\__CG__\App\Entity\Book;
 use Proxies\__CG__\App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class BooksController extends AbstractController
 {
@@ -15,8 +16,11 @@ class BooksController extends AbstractController
      */
     public function listAllBooks()
     {
+        $booksRepository = $this->getDoctrine()->getRepository(Book::class);
+
         return $this->render('books/index.html.twig', [
             'controller_name' => 'BooksController',
+            'books' => $booksRepository->findAll()
         ]);
     }
 
@@ -25,8 +29,11 @@ class BooksController extends AbstractController
      */
     public function listAllCategories()
     {
+        $categoryRepository = $this->getDoctrine()->getRepository(Category::class);
+
         return $this->render('books/categories.html.twig', [
             'controller_name' => 'BooksController',
+            'categories' => $categoryRepository->findAll()
         ]);
     }
 
@@ -44,6 +51,8 @@ class BooksController extends AbstractController
 
     /**
      * @Route("/book/{id}", name="book")
+     * 
+     * @IsGranted("ROLE_USER")
      */
     public function showBook(int $id)
     {
@@ -63,6 +72,8 @@ class BooksController extends AbstractController
 
     /**
      * @Route("/add", name="add")
+     * 
+     * @IsGranted("ROLE_USER")
      */
     public function addBook()
     {
