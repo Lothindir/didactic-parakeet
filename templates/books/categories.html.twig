@@ -4,4 +4,14 @@
 
 {% block body %}
 
+<pre>
+    {{ dump(books) }}
+
+    {% for book in books %}
+        {{dump(book)}}
+    {% endfor %}
+</pre>
+
+
+
 {% endblock %}

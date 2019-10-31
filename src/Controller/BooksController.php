@@ -44,8 +44,15 @@ class BooksController extends AbstractController
     {
         $categoryRepository = $this->getDoctrine()->getRepository(Category::class);
 
+        $cat = $categoryRepository->findOneBy(array('Name' => $category));
+
+        if($cat === null) {
+            throw $this->createNotFoundException('Cette catégorie n\'existe pas');
+        }
+
         return $this->render('books/categories.html.twig', [
             'controller_name' => 'BooksController',
+            'books' => $cat->getBooks()
         ]);
     }
 
