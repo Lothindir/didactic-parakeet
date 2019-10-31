@@ -2,8 +2,36 @@
 
 {% block title %}{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/bookAnimation.css') }}">
+{% endblock %}
+
 {% block body %}
-<pre>
-    {{ dump(book) }}
-</pre>
+    {# <pre>
+        {{ dump(book) }}
+    </pre> #}
+    <div class=" min-h-full min-w-full overflow-hidden">
+        <div class="container">
+            <div class="cover">
+                <figure class="front flex items-center">
+                    <img src="{{ asset('images/logo.png') }}" alt="pero" width="424">
+                </figure>
+                <figure class="back"></figure>
+            </div>
+
+            <p class="p-6">
+                Hello Sir,
+                Thank you for sharing the tutorial.
+                Please share how we can add more images to 3D flipping, so that it looks like a book full of images on each
+                page.
+    
+                Thanking you in anticipation.
+    
+                Regards
+                Taruchit
+            </p>
+        </div>
+    </div>
+
 {% endblock %}

@@ -1,0 +1,58 @@
+* {margin: 0; padding: 0;}
+html,body {width: 100%;height: 100%}
+
+body{
+    background: white;
+}
+
+.container{
+    width: 429px;
+    height: 600px;
+    background: url('../images/rPage.jpg');
+    position: relative;
+    left: 55%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    perspective: 1000px;
+}
+
+
+.cover{
+    width: 424px;
+    height: 100%;
+    position: absolute;
+    left: 5px;
+    background-color: #345b8c;
+    transform: rotateY(0deg);
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: all 2s ease-in;
+}
+
+.container:hover .cover{
+    transform: rotateY(-180deg);
+}
+
+figure{
+    margin: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+figure img{
+    width: 245;
+}
+
+figure.front{
+    text-align: center;
+    background: #017CC2;
+    z-index: 100;
+}
+
+figure.back{
+    background: url('../images/lPage.jpg');
+    transform: rotateY(180deg);
+}
