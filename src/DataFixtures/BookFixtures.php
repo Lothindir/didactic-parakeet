@@ -24,7 +24,7 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
             $book->setReleaseDate($faker->dateTimeBetween('-100 years', '-5 years'));
             $book->setExtractLink($faker->url);
             $book->setCoverImage($faker->imageUrl(480,640));
-            $cat = $this->getReference('Cat'.rand(0,4));
+            $cat = $this->getReference('Cat'.rand(0,10));
             $book->setCategory($cat);
             $user = $this->getReference('User'.rand(0,19));
             $book->setUser($user);

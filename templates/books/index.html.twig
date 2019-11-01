@@ -4,4 +4,10 @@
 
 {% block body %}
 
+<div class="px-4 bg-white pt-4 w-full">
+    {% for book in books %}
+        <a href="/book/{{book.Id}}">{{book.Title}}</a><br>
+    {% endfor %}
+</div>
+
 {% endblock %}

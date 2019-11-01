@@ -4,13 +4,22 @@
 
 {% block body %}
 
-<pre>
-    {{ dump(books) }}
-
+{% if books is defined %}
+<div class="px-4 bg-white pt-4 w-full">
     {% for book in books %}
-        {{dump(book)}}
+        <a href="/book/{{book.Id}}">{{book.Title}}</a><br>
     {% endfor %}
-</pre>
+</div>
+
+{% elseif categories is defined %}
+
+<div class="px-4 bg-white pt-4 w-full">
+{% for category in categories %}
+    <a href="/categories/{{category.Name}}">{{category.Name}}</a><br>
+{% endfor %}
+</div>
+
+{% endif %}
 
 
 
