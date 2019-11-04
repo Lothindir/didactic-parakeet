@@ -97,15 +97,15 @@ will compile and watch any changes in your files, and re-complies when needed.
 
 ## Roadmap
 #### Fonctionnalités
-- [ ]	Petite bande en haut, menu à gauche (bande verticale), logo à gauche et login/inscription à droite
-- [ ]	Pied de page avec nos noms ainsi que le moyen de nous contacter (didacticParakeet.contact@gmail.com)
+- [X]	Petite bande en haut, menu à gauche (bande verticale), logo à gauche et login/inscription à droite
+- [X]	Pied de page avec nos noms ainsi que le moyen de nous contacter (contact@didactic-parakeet.com)
 - [ ]	Explication de l’utilité du site ainsi que les 5 derniers ouvrages ajoutés.
     - [ ]	« Bienvenue sur Didactic Parakeet, le site pour toutes et tous les vrais passionnés de lecture. Ce site a été créé par amour des livres. Mais également afin de découvrir et de faire découvrir de nouvelles œuvres. Vous pouvez également laisser une appréciation sur ces dernières. Alors n’hésitez plus et inscrivez-vous afin de profiter de l’ensemble des fonctionnalités. »
-    - [ ]	Les 5 derniers ouvrages ajoutés : Via des petites cartes ? des bandes larges ?
+    - [X]	Les 5 derniers ouvrages ajoutés : Via des petites cartes ? des bandes larges ?
 - [ ]	Liste des livres :
     - [ ]	Vue liste, Accès libre
         - [ ]	Une page avec tous les livres (par ordre alphabétique). 
-        - [ ]	Une page par catégorie, accessible via un bouton sur la page de base.
+        - [X]	Une page par catégorie, accessible via un bouton sur la page de base.
     - [ ]	Vue détaillée, accès que aux membres connectés
         -	Vue détaillée soit sur un livre soit sur une personne.
         -	Si pas connecté, redirection sur la page de connexion.
@@ -116,6 +116,6 @@ will compile and watch any changes in your files, and re-complies when needed.
   -  [ ] Homepage [Everyone]
   -  [ ] Vue générale des livres (classé par ordre alphabétique) [Everyone]
   -  [ ] Vue détaillée par livre [Users]
-  -  [ ] Vue par catégorie [Everyone]
+  -  [X] Vue par catégorie [Everyone]
   -  [ ] Page ajout de livre [Users]
   -  [ ] Vue détaillée utilisateur [Users]
