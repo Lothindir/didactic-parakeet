@@ -20,7 +20,8 @@ class BooksController extends AbstractController
 
         return $this->render('books/index.html.twig', [
             'controller_name' => 'BooksController',
-            'books' => $booksRepository->findAll()
+            'title' => 'Tous les livres',
+            'books' => $booksRepository->findBy(array(), array('Title' => 'ASC'))
         ]);
     }
 
@@ -33,6 +34,7 @@ class BooksController extends AbstractController
 
         return $this->render('books/index.html.twig', [
             'controller_name' => 'BooksController',
+            'title' => 'Toutes les catégories',
             'categories' => $categoryRepository->findAll()
         ]);
     }
@@ -52,6 +54,7 @@ class BooksController extends AbstractController
 
         return $this->render('books/index.html.twig', [
             'controller_name' => 'BooksController',
+            'title' => 'Catégorie ' . $cat->getName(),
             'books' => $cat->getBooks()
         ]);
     }
