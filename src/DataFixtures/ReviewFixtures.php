@@ -15,14 +15,14 @@ class ReviewFixtures extends Fixture implements DependentFixtureInterface
     {
         $reviewsDone = [];
 
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 2000; $i++) {
             $review = new Review();
             $user = new User();
             $book = new Book();
 
             do{
                 $user = $this->getReference('User'.rand(0,19));
-                $book = $this->getReference('Book'.rand(0,49));
+                $book = $this->getReference('Book'.rand(0,199));
             }while(count(array_filter($reviewsDone, function($v) use($book, $user)
             {
                 return $v->getBook()->getId() == $book->getId() && 

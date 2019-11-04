@@ -14,7 +14,7 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create('fr_CH');
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             $book = new Book();
             $book->setTitle($faker->catchPhrase);
             $book->setAuthorFirstName($faker->firstName());
