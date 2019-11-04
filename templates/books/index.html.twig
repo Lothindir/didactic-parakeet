@@ -18,15 +18,6 @@
         {% set image = 'Image' %}
     {% endif %}
 
-    <div class="bg-white pt-4 w-full flex flex-row flex-wrap">
-        {% for element in array %}
-            <a href="/{{ path }}/{{ attribute(element, index) }}" class="w-1/4">
-                <div class="m-4 rounded overflow-hidden shadow-lg">
-                    <img class="w-full" src="{{ attribute(element, image) }}" alt="{{ attribute(element, text) }}">
-                    <div class="font-bold text-xl mb-2 px-6 py-4 h-24 flex items-center justify-center text-center">{{ attribute(element, text) }}</div>
-                </div>
-            </a>
-        {% endfor %}
-    </div>
+    {% include 'partials/cards.html.twig' %}
 
 {% endblock %}

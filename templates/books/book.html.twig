@@ -8,29 +8,24 @@
 {% endblock %}
 
 {% block body %}
-    {# <pre>
-        {{ dump(book) }}
-    </pre> #}
     <div class=" min-h-full min-w-full overflow-hidden">
         <div class="container">
             <div class="cover">
                 <figure class="front flex items-center">
-                    <div class="figureImg"></div>
+                    <div class="figureImg" style="background-image: url('{{ book.CoverImage }}');"></div>
                 </figure>
                 <figure class="back"></figure>
             </div>
 
-            <p class="p-6">
-                Hello Sir,
-                Thank you for sharing the tutorial.
-                Please share how we can add more images to 3D flipping, so that it looks like a book full of images on each
-                page.
-    
-                Thanking you in anticipation.
-    
-                Regards
-                Taruchit
-            </p>
+            <div class="p-6">
+                <h1 class="font-bold text-center small-caps text-xl inline">{{ book.Title }}</h1><br>
+                <h2 class="font-semibold inline">Auteur :</h2><p class="inline">{{ book.AuthorFirstName }} {{ book.AuthorLastName }}</p><br>
+                <h2 class="font-semibold inline">Editeur : </h2><p class="inline"></p>{{ book.Editor }}</p><br>
+                <h2 class="font-semibold inline">{{ book.NumberPages }} pages</h2><br>
+                <h2 class="font-semibold inline">Résumé :</h2><br>
+                <p>{{ book.Summary }}</p><br>
+                <h2 class="font-semibold">Extrait : <a href="{{ book.ExtractLink }}">{{ book.ExtractLink }}</a></h2>
+            </div>
         </div>
     </div>
 

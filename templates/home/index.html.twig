@@ -4,11 +4,13 @@
 {% endblock %}
 
 {% block body %}
-    <div class="px-4 bg-white pt-4 w-full">
-        <ul>
-            {% for user in users %}
-            <li>{{ user.Username }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+
+    {% set array = books %}
+    {% set path = 'book' %}
+    {% set index = 'Id' %}
+    {% set text = 'Title' %}
+    {% set image = 'CoverImage' %}
+
+    {% include 'partials/cards.html.twig' %}
+
 {% endblock %}
