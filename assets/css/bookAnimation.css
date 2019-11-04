@@ -42,8 +42,12 @@ figure{
     backface-visibility: hidden;
 }
 
-figure img{
-    width: 245;
+figure .figureImg{
+    width: 420px;
+    height: 420px;
+    background-image: url('../images/logo.png');
+    background-size: cover;
+    background-position: center;
 }
 
 figure.front{
