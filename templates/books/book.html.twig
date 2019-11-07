@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class=" min-h-full min-w-full overflow-hidden">
+    <div class=" min-h-full min-w-full overflow-hidden flex-1">
         <div class="container">
             <div class="cover">
                 <figure class="front flex items-center">
@@ -17,9 +17,9 @@
                 <figure class="back"></figure>
             </div>
 
-            <div class="p-6">
+            <div class="p-6 h-full">
                 <h1 class="font-bold text-center small-caps text-xl inline">{{ book.Title }}</h1><br>
-                <h2 class="font-semibold inline">Auteur :</h2><p class="inline">{{ book.AuthorFirstName }} {{ book.AuthorLastName }}</p><br>
+                <h2 class="font-semibold inline">Auteur : </h2><p class="inline">{{ book.AuthorFirstName }} {{ book.AuthorLastName }}</p><br>
                 <h2 class="font-semibold inline">Editeur : </h2><p class="inline"></p>{{ book.Editor }}</p><br>
                 <h2 class="font-semibold inline">{{ book.NumberPages }} pages</h2><br>
                 <h2 class="font-semibold inline">Résumé :</h2><br>

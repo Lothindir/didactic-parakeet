@@ -1,61 +1,76 @@
-* {margin: 0; padding: 0;}
-html,body {width: 100%;height: 100%}
-
-body{
-    background: white;
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
 
-.container{
-    width: 429px;
-    height: 600px;
-    background: url('../images/rPage.jpg');
-    position: relative;
-    left: 55%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    perspective: 1000px;
+body {
+  background: white;
 }
 
-
-.cover{
-    width: 424px;
-    height: 100%;
-    position: absolute;
-    left: 5px;
-    background-color: #345b8c;
-    transform: rotateY(0deg);
-    transform-style: preserve-3d;
-    transform-origin: left;
-    transition: all 2s ease-in;
+.container {
+  width: 429px;
+  height: 600px;
+  background: url("../images/rPage.jpg");
+  position: relative;
+  left: 55%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 1000px;
 }
 
-.container:hover .cover{
-    transform: rotateY(-180deg);
+.cover {
+  width: 424px;
+  height: 100%;
+  position: absolute;
+  left: 5px;
+  background-color: #017cc2;
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+  transform-origin: left;
+  transition: all 2s ease-in;
+  z-index: 10;
 }
 
-figure{
-    margin: 0;
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
+.container:hover .cover {
+  transform: rotateY(-180deg);
 }
 
-figure .figureImg{
-    width: 100%;
-    height: 100%;
-    background-image: url('../images/logo.png');
-    background-size: cover;
-    background-position: center;
+figure {
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
 }
 
-figure.front{
-    text-align: center;
-    background: #017CC2;
+figure .figureImg {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/logo.png");
+  background-size: cover;
+  background-position: center;
 }
 
-figure.back{
-    background: url('../images/lPage.jpg');
-    transform: rotateY(180deg);
+figure .front {
+  text-align: center;
+  background: #017cc2;
+}
+
+figure .back {
+  background: url("../images/lPage.jpg");
+  transform: rotateY(180deg);
+}
+
+figure .logo {
+  background-image: url("../images/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 420px;
+  height: 600px;
 }
