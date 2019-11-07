@@ -297,6 +297,9 @@ module.exports = {
     }),
     inset: {
       '0': '0',
+      '40': '40%',
+      '45': '45%',
+      '50': '50%',
       auto: 'auto',
     },
     letterSpacing: {

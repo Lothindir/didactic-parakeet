@@ -18,7 +18,7 @@ body {
   background: url("../images/rPage.jpg");
   position: relative;
   left: 55%;
-  top: 50%;
+  /* top: 50%; */
   transform: translate(-50%, -50%);
   perspective: 1000px;
 }
@@ -57,12 +57,12 @@ figure .figureImg {
   background-position: center;
 }
 
-figure .front {
+#front {
   text-align: center;
   background: #017cc2;
 }
 
-figure .back {
+#back {
   background: url("../images/lPage.jpg");
   transform: rotateY(180deg);
 }
@@ -72,5 +72,4 @@ figure .logo {
   background-size: contain;
   background-repeat: no-repeat;
   width: 420px;
-  height: 600px;
 }
