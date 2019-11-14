@@ -63,6 +63,7 @@ figure .figureImg {
 }
 
 #back {
+  width: 425px;
   background: url("../images/lPage.jpg");
   transform: rotateY(180deg);
 }
