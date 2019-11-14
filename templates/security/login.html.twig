@@ -14,7 +14,7 @@
 
     <div class=" min-h-full min-w-full overflow-hidden flex-1">
         <div class="text-3xl z-0 text-center">
-            Connectez-vous afin de profiter de toutes les fontionalités du site.
+            Connectez-vous afin de profiter de toutes les fonctionnalités du site.
         </div>
         <div class="container top-45">
             <div class="cover">
@@ -62,7 +62,7 @@
                 </div>
 
                 {% if error %}
-                    <div class="alert alert-danger text-red-600">{{ error.messageKey|trans(error.messageData, 'security') }} TEST</div>
+                    <div class="alert alert-danger text-red-600 ml-8 mr-8">{{ error.message | replace({"Username could not be found." : "Le pseudonyme utilisé afin de vous connecter n'est pas valide"}) }}</div>
                 {% endif %}
             </form>
         </div>
