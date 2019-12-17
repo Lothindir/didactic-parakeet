@@ -102,20 +102,20 @@ will compile and watch any changes in your files, and re-complies when needed.
 - [X]	Explication de l’utilité du site ainsi que les 5 derniers ouvrages ajoutés.
     - [X]	« Bienvenue sur Didactic Parakeet, le site pour toutes et tous les vrais passionnés de lecture. Ce site a été créé par amour des livres. Mais également afin de découvrir et de faire découvrir de nouvelles œuvres. Vous pouvez également laisser une appréciation sur ces dernières. Alors n’hésitez plus et inscrivez-vous afin de profiter de l’ensemble des fonctionnalités. »
     - [X]	Les 5 derniers ouvrages ajoutés : Via des petites cartes ? des bandes larges ?
-- [ ]	Liste des livres :
+- [X]	Liste des livres :
     - [X]	Vue liste, Accès libre
         - [X]	Une page avec tous les livres (par ordre alphabétique). 
         - [X]	Une page par catégorie, accessible via un bouton sur la page de base.
-    - [ ]	Vue détaillée, accès que aux membres connectés
+    - [X]	Vue détaillée, accès que aux membres connectés
         -	Vue détaillée soit sur un livre soit sur une personne.
         -	Si pas connecté, redirection sur la page de connexion.
 - [ ]	Une page pour ajouter des livres :
     -    Il faut être connecté.
-- [ ]	Un simple form, avec les doubles checks (client et server)
+    - [ ]	Un simple form, avec les doubles checks (client et server)
 - Pages :
   -  [X] Homepage [Everyone]
   -  [X] Vue générale des livres (classé par ordre alphabétique) [Everyone]
-  -  [ ] Vue détaillée par livre [Users]
+  -  [X] Vue détaillée par livre [Users]
   -  [X] Vue par catégorie [Everyone]
   -  [ ] Page ajout de livre [Users]
   -  [ ] Vue détaillée utilisateur [Users]
