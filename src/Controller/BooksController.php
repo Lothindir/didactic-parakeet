@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\AddBookType;
 use phpDocumentor\Reflection\Types\Integer;
 use Proxies\__CG__\App\Entity\Book;
 use Proxies\__CG__\App\Entity\Category;
@@ -87,8 +88,13 @@ class BooksController extends AbstractController
      */
     public function addBook()
     {
+        $book = new Book();
+
+        $form = $this->createForm(AddBookType::class, $book);
+
         return $this->render('books/add.html.twig', [
             'controller_name' => 'BooksController',
+            'addBookForm' => $form->createView()
         ]);
     }
 }
