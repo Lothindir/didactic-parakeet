@@ -30,6 +30,22 @@ class UserFixtures extends Fixture
         $manager->persist($adminUser);
         $this->addReference('ADMIN', $adminUser);
 
+        for ($i = 0; $i < 20; $i++) {
+
+            $faker = Faker\Factory::create('fr_CH');
+
+            $user = new User();
+            $user->setUsername($faker->userName);
+            $user->setEntryDate($faker->dateTimeBetween('-15 years'));
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user,
+                '1234'
+            ));
+            $manager->persist($user);
+
+            $this->addReference('User'.$i, $user);
+        }
+
         $manager->flush();
     }
 }
