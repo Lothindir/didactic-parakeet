@@ -1,8 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
 
 {% block body %}
+
+	<div class=" min-h-full min-w-full overflow-hidden flex-1">
+		<div class="text-3xl z-0 text-center">
+			Inscrivez-vous afin de profiter de toutes les fonctionnalités du site.
+		</div>
+		<div class="container top-45">
+				<div class="w-full max-w-xs mx-auto mt-20">
+					<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+						<div class="mb-4">
+							<label for="inputUsername" class="block text-gray-700 text-sm font-bold mb-2">
+								Nom d'utilisateur
+							</label>
+							<input name="Username" id="inputUsername" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder=" johndoe" required autofocus>
+						</div>
+						<div class="mb-6">
+							<label class="block text-gray-700 text-sm font-bold mb-2" for="inputPassword">
+								Mot de passe
+							</label>
+							<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" name="password" id="inputPassword" type="password" placeholder="******************" required>
+						</div>
+						<div class="flex items-center justify-between">
+							<button class="bg-blue-parakeet hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+								Créer un compte
+							</button>
+						</div>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					</form>
+				</div>
+		</div>
+	</div>
+{% endblock %}
+
+{# {% block body %}
     <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
@@ -11,4 +45,4 @@
 
         <button class="btn">Register</button>
     {{ form_end(registrationForm) }}
-{% endblock %}
+{% endblock %} #}
