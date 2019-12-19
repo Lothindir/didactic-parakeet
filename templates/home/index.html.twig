@@ -4,11 +4,18 @@
 {% endblock %}
 
 {% block body %}
-    <div class="px-4 bg-white pt-4 w-full">
-        <ul>
-            {% for user in users %}
-            <li>{{ user.Username }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+
+    <h1 class="font-bold text-5xl pl-4">Bienvenue !</h1>
+    <p class="px-12 font-medium text-xl text-justify italic">Bienvenue sur Didactic Parakeet, le site pour tous les vrais passionnés de lecture. Ce site a été créé par amour des livres. Mais également afin de découvrir et de faire découvrir de nouvelles œuvres. Vous pouvez également laisser une appréciation sur ces dernières. Alors n’hésitez plus et inscrivez-vous afin de profiter de l’ensemble des fonctionnalités.</p>
+    <p class="px-24 font-light text-xl text-right italic">- Jo</p>
+
+    <h1 class="font-bold text-4xl pl-4">Derniers ouvrages ajoutés</h1>
+    {% set array = books %}
+    {% set path = 'book' %}
+    {% set index = 'Id' %}
+    {% set text = 'Title' %}
+    {% set image = 'CoverImage' %}
+
+    {% include 'partials/cards.html.twig' %}
+
 {% endblock %}

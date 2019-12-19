@@ -28,6 +28,11 @@ class Category
      */
     private $books;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Image;
+
     public function __construct()
     {
         $this->books = new ArrayCollection();
@@ -77,6 +82,18 @@ class Category
                 $book->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->Image;
+    }
+
+    public function setImage(string $Image): self
+    {
+        $this->Image = $Image;
 
         return $this;
     }

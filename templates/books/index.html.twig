@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    <h1 class="font-bold text-6xl p-1 pl-4">{{ title }}</h1>
+
+    {% if books is defined %}
+        {% set array = books %}
+        {% set path = 'book' %}
+        {% set index = 'Id' %}
+        {% set text = 'Title' %}
+        {% set image = 'CoverImage' %}
+    {% elseif categories is defined %}
+        {% set array = categories %}
+        {% set path = 'categories' %}
+        {% set index = 'Name' %}
+        {% set text = 'Name' %}
+        {% set image = 'Image' %}
+    {% endif %}
+
+    {% include 'partials/cards.html.twig' %}
+
+{% endblock %}
