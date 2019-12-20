@@ -20,7 +20,7 @@
                 <figure id="back"></figure>
             </div>
 
-            <div class="p-6 h-full">
+            <div class="p-6 h-full overflow-y-auto">
                 <h1 class="font-bold text-center small-caps text-xl inline">{{ book.Title }}</h1><br>
                 <h2 class="font-semibold inline">Auteur :
                 </h2>
@@ -34,7 +34,7 @@
                 pages</h2><br>
             <h2 class="font-semibold inline">Résumé :</h2><br>
             <p>{{ book.Summary }}</p><br>
-            <h2 class="font-semibold">Extrait :
+            <h2 class="font-semibold mb-6">Extrait :
                 <a href="{{ book.ExtractLink }}">{{ book.ExtractLink }}</a>
             </h2>
         </div>

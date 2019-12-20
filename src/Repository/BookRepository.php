@@ -31,7 +31,7 @@ class BookRepository extends ServiceEntityRepository
     public function getLastAdded(int $limit = 5)
     {
         return $this->createQueryBuilder('b')
-            ->orderBy('b.AddedDate', 'ASC')
+            ->orderBy('b.AddedDate', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
