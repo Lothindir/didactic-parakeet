@@ -84,6 +84,7 @@ class BooksController extends AbstractController
         return $this->render('books/book.html.twig', [
             'controller_name' => 'BooksController',
             'book' => $book,
+            'user' => $this->getUser(),
             'bookCoverIsURL' => $this->isUrl($book->getCoverImage()),
             'bookAvgRating' => number_format((float)$reviewRepository->getAverageRatingByBook($book), 2, ',', ''),
             'bookNbReviews' => $reviewRepository->getNumberOfReviewsByBook($book),
@@ -119,6 +120,8 @@ class BooksController extends AbstractController
                 $filename = filter_var(preg_replace('/\s+/', '', $form->get('Title')->getData()),FILTER_SANITIZE_STRING);
                 $image->move('uploads', $filename . '.png');
                 $imagePath = '/public/uploads/' . $filename . '.png';
+                $img = $this->resize_image($imagePath, 600, 450, true);
+                $img->move('uploads', $filename . '.png');
             }
             else if ($this->isUrl($form->get('CoverImage')->get('CoverImageURL')->getData())){
                 $imagePath = $form->get('CoverImage')->get('CoverImageURL')->getData();
@@ -162,6 +165,10 @@ class BooksController extends AbstractController
         $booksRepository = $this->getDoctrine()->getRepository(Book::class);
         $book = $booksRepository->find($id);
 
+        if ($book === null) {
+            throw $this->createNotFoundException('Ce livre n\'existe pas');
+        }
+
         $review = new Review();
         $this->getUser()->addReview($review);
         $book->addReview($review);
@@ -174,8 +181,63 @@ class BooksController extends AbstractController
         return $this->redirect('/book/' . $id);
     }
 
+    /**
+     * @Route("/book/{id}/remove", name="remove")
+     * 
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function removeBook(int $id)
+    {
+        $booksRepository = $this->getDoctrine()->getRepository(Book::class);
+        $book = $booksRepository->find($id);
+
+        if ($book === null) {
+            throw $this->createNotFoundException('Ce livre n\'existe pas');
+        }
+
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $reviews = $this->getDoctrine()->getRepository(Review::class)->findByBook($book);
+        foreach ($reviews as $rId => $review) {
+            $entityManager->remove($review);
+            $entityManager->flush();
+        }
+
+        $entityManager->remove($book);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('home');
+    }
+
     private function isUrl($uri)
     {
         return preg_match('/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}' . '((:[0-9]{1,5})?\\/.*)?$/i', $uri);
+    }
+
+    private function resize_image($file, $w, $h, $crop=FALSE) {
+        list($width, $height) = getimagesize($file);
+        $r = $width / $height;
+        if ($crop) {
+            if ($width > $height) {
+                $width = ceil($width-($width*abs($r-$w/$h)));
+            } else {
+                $height = ceil($height-($height*abs($r-$w/$h)));
+            }
+            $newwidth = $w;
+            $newheight = $h;
+        } else {
+            if ($w/$h > $r) {
+                $newwidth = $h*$r;
+                $newheight = $h;
+            } else {
+                $newheight = $w/$r;
+                $newwidth = $w;
+            }
+        }
+        $src = imagecreatefrompng($file);
+        $dst = imagecreatetruecolor($newwidth, $newheight);
+        imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+    
+        return $dst;
     }
 }

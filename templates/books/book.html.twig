@@ -49,4 +49,7 @@
             <input class="block mx-auto p-2 mt-4 bg-blue-600 text-white rounded" type="submit" value="Ajouter">
         </form>
     {% endif %}
+    {% if user.Role == 'ROLE_ADMIN' %}
+        <a class="text-xl z-0 text-center mt-64 pt-42 text-red-400" href="/book/{{ book.Id }}/remove">Delete</a>
+    {% endif %}
 </div>{% endblock %}
