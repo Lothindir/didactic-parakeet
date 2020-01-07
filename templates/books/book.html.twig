@@ -9,10 +9,10 @@
 
 {% block body %}
     <div class=" min-h-full min-w-full overflow-hidden flex-1">
-        <div class="text-3xl z-0 text-center">
+        <div class="text-3xl z-0 mt-12 text-center">
             Détails de l'oeuvre
         </div>
-        <div class="container top-45">
+        <div class="container top-40">
             <div class="cover">
                 <figure id="front" class="flex items-center">
                     <div class="figureImg" style="background-image: url('{{ book.CoverImage }}');"></div>
@@ -40,4 +40,13 @@
             <h2 class="font-normal mb-6">Note : {{ bookAvgRating }} sur {{ bookNbReviews }} évaluations</h2>
         </div>
     </div>
+    {% if userReview != 0 %}
+        <h2 class="text-3xl z-0 text-center mt-64">Votre évaluation : {{ userReview }} / 5</h2>
+    {% else %}
+        <form class="text-3xl z-0 text-center mt-64" action="/book/{{ book.Id }}/review" method="POST">
+            <label for="rating">Ajouter une évaluation (entre 0.5 et 5) :</label>
+            <input class="w-16" type="number" name="rating" id="rating" min="0.5" max="5" step="0.5">
+            <input class="block mx-auto p-2 mt-4 bg-blue-600 text-white rounded" type="submit" value="Ajouter">
+        </form>
+    {% endif %}
 </div>{% endblock %}

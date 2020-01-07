@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Review;
+use App\Repository\ReviewRepository;
 use App\Form\AddBookType;
 use Proxies\__CG__\App\Entity\Book;
 use Proxies\__CG__\App\Entity\Category;
@@ -69,6 +71,7 @@ class BooksController extends AbstractController
     public function showBook(int $id)
     {
         $booksRepository = $this->getDoctrine()->getRepository(Book::class);
+        $reviewRepository = $this->getDoctrine()->getRepository(Review::class);
 
         $book = $booksRepository->find($id);
 
@@ -76,12 +79,15 @@ class BooksController extends AbstractController
             throw $this->createNotFoundException('Ce livre n\'existe pas');
         }
 
+        $userReview = $reviewRepository->findByBookAndUser($book, $this->getUser());
+
         return $this->render('books/book.html.twig', [
             'controller_name' => 'BooksController',
             'book' => $book,
             'bookCoverIsURL' => $this->isUrl($book->getCoverImage()),
-            'bookAvgRating' => number_format((float)$booksRepository->getAverageRating($book), 2, ',', ''),
-            'bookNbReviews' => $booksRepository->getNumberOfReviews($book),
+            'bookAvgRating' => number_format((float)$reviewRepository->getAverageRatingByBook($book), 2, ',', ''),
+            'bookNbReviews' => $reviewRepository->getNumberOfReviewsByBook($book),
+            'userReview' => empty($userReview) ? 0 : $userReview[0]['Rating'],
         ]);
     }
 
@@ -133,8 +139,6 @@ class BooksController extends AbstractController
             $entityManager->persist($book);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
-
             return $this->redirect('/book/'.$book->getId());
         }
 
@@ -142,6 +146,32 @@ class BooksController extends AbstractController
             'controller_name' => 'BooksController',
             'addBookForm' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/book/{id}/review", name="addReview")
+     * 
+     * @IsGranted("ROLE_USER")
+     */
+    public function addReview(int $id)
+    {
+        if(!isset($_POST['rating']) || (float)($_POST['rating'] * 2) % 1 !== 0 || $_POST['rating'] < 0.5 || $_POST['rating'] > 5) {
+            return $this->redirect('/book/' . $id);
+        }
+
+        $booksRepository = $this->getDoctrine()->getRepository(Book::class);
+        $book = $booksRepository->find($id);
+
+        $review = new Review();
+        $this->getUser()->addReview($review);
+        $book->addReview($review);
+        $review->setRating($_POST['rating']);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($review);
+        $entityManager->flush();
+
+        return $this->redirect('/book/' . $id);
     }
 
     private function isUrl($uri)
