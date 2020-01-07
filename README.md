@@ -106,17 +106,17 @@ will compile and watch any changes in your files, and re-complies when needed.
     - [X]	Vue liste, Accès libre
         - [X]	Une page avec tous les livres (par ordre alphabétique). 
         - [X]	Une page par catégorie, accessible via un bouton sur la page de base.
-    - [ ]	Vue détaillée, accès que aux membres connectés
+    - [X]	Vue détaillée, accès que aux membres connectés
         -	Vue détaillée soit sur un livre soit sur une personne.
         -	Si pas connecté, redirection sur la page de connexion.
-        - [ ] Ajout d'une review par utilisateur
-- [ ]	Une page pour ajouter des livres :
+        - [X] Ajout d'une review par utilisateur
+- [X]	Une page pour ajouter des livres :
     -    Il faut être connecté.
-    - [ ]	Un simple form, avec les doubles checks (client et server)
+    - [X]	Un simple form, avec les doubles checks (client et server)
 - Pages :
   -  [X] Homepage [Everyone]
   -  [X] Vue générale des livres (classé par ordre alphabétique) [Everyone]
   -  [X] Vue détaillée par livre [Users]
   -  [X] Vue par catégorie [Everyone]
-  -  [ ] Page ajout de livre [Users]
-  -  [ ] Vue détaillée utilisateur [Users]
+  -  [X] Page ajout de livre [Users]
+  -  [X] Vue détaillée utilisateur [Users]

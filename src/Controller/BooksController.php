@@ -118,7 +118,7 @@ class BooksController extends AbstractController
                 $image = $form->get('CoverImage')->get('CoverImageFile')->getData();
                 $filename = filter_var(preg_replace('/\s+/', '', $form->get('Title')->getData()),FILTER_SANITIZE_STRING);
                 $image->move('uploads', $filename . '.png');
-                $imagePath = '/uploads/' . $filename . '.png';
+                $imagePath = '/public/uploads/' . $filename . '.png';
             }
             else if ($this->isUrl($form->get('CoverImage')->get('CoverImageURL')->getData())){
                 $imagePath = $form->get('CoverImage')->get('CoverImageURL')->getData();
