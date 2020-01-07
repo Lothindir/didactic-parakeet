@@ -15,16 +15,12 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $usersRepository = $this->getDoctrine()->getRepository(User::class);
-        $users = $usersRepository->findAll();
-
         $books = $this->getDoctrine()
             ->getRepository(Book::class)
             ->getLastAdded(5);
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'users' => $users,
             'books' => $books
          ]);
     }
