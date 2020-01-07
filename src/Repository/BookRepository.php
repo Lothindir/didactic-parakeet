@@ -37,14 +37,27 @@ class BookRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function getAverageRating($Book)
+    public function getAverageRating($book)
     {
         $qb = $this->createQueryBuilder('b');
         return $qb
             ->add('select', $qb->expr()->avg('r.Rating'))
             ->from('App\Entity\Review', 'r')
             ->where('r.Book = :id')
-            ->setParameter('id', $Book->getId())
+            ->setParameter('id', $book->getId())
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
+
+    public function getNumberOfReviews($book)
+    {
+        $qb = $this->createQueryBuilder('b');
+        return $qb
+            ->select('count(r.Rating)')
+            ->from('App\Entity\Review', 'r')
+            ->where('r.Book = :id')
+            ->setParameter('id', $book->getId())
             ->getQuery()
             ->getSingleScalarResult()
         ;

@@ -79,7 +79,9 @@ class BooksController extends AbstractController
         return $this->render('books/book.html.twig', [
             'controller_name' => 'BooksController',
             'book' => $book,
-            'bookCoverIsURL' => $this->isUrl($book->getCoverImage())
+            'bookCoverIsURL' => $this->isUrl($book->getCoverImage()),
+            'bookAvgRating' => number_format((float)$booksRepository->getAverageRating($book), 2, ',', ''),
+            'bookNbReviews' => $booksRepository->getNumberOfReviews($book),
         ]);
     }
 
