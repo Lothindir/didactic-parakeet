@@ -31,22 +31,9 @@ class BookRepository extends ServiceEntityRepository
     public function getLastAdded(int $limit = 5)
     {
         return $this->createQueryBuilder('b')
-            ->orderBy('b.AddedDate', 'ASC')
+            ->orderBy('b.AddedDate', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
-    }
-
-    public function getAverageRating($Book)
-    {
-        $qb = $this->createQueryBuilder('b');
-        return $qb
-            ->add('select', $qb->expr()->avg('r.Rating'))
-            ->from('App\Entity\Review', 'r')
-            ->where('r.Book = :id')
-            ->setParameter('id', $Book->getId())
-            ->getQuery()
-            ->getSingleScalarResult()
-        ;
     }
 }

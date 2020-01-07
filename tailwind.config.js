@@ -155,6 +155,7 @@ module.exports = {
       '48': '12rem',
       '56': '14rem',
       '64': '16rem',
+      '144': '36rem',
     },
     backgroundColor: theme => theme('colors'),
     backgroundPosition: {
@@ -297,6 +298,7 @@ module.exports = {
     }),
     inset: {
       '0': '0',
+      '35': '35%',
       '40': '40%',
       '45': '45%',
       '50': '50%',
@@ -331,6 +333,16 @@ module.exports = {
     maxHeight: {
       full: '100%',
       screen: '100vh',
+      xs: '20rem',
+      sm: '24rem',
+      md: '28rem',
+      lg: '32rem',
+      xl: '36rem',
+      '2xl': '42rem',
+      '3xl': '48rem',
+      '4xl': '56rem',
+      '5xl': '64rem',
+      '6xl': '72rem',
     },
     maxWidth: {
       xs: '20rem',
