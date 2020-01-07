@@ -3,7 +3,7 @@
 # mod_rewrite). Additionally, this reduces the matching process for the
 # start page (path "/") because otherwise Apache will apply the rewriting rules
 # to each configured DirectoryIndex file (e.g. index.php, index.html, index.pl).
-DirectoryIndex index.php
+DirectoryIndex public/index.php
 
 # By default, Apache does not evaluate symbolic links if you did not enable this
 # feature in your server configuration. Uncomment the following line if you
@@ -46,13 +46,13 @@ DirectoryIndex index.php
     # - use Apache >= 2.3.9 and replace all L flags by END flags and remove the
     #   following RewriteCond (best solution)
     RewriteCond %{ENV:REDIRECT_STATUS} =""
-    RewriteRule ^index\.php(?:/(.*)|$) %{ENV:BASE}/$1 [R=301,L]
+    RewriteRule ^public/index\.php(?:/(.*)|$) %{ENV:BASE}/$1 [R=301,L]
 
     # If the requested filename exists, simply serve it.
     # We only want to let Apache serve files and not directories.
     # Rewrite all other queries to the front controller.
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ %{ENV:BASE}/index.php [L]
+    RewriteRule ^ %{ENV:BASE}/public/index.php [L]
 </IfModule>
 
 <IfModule !mod_rewrite.c>
@@ -60,7 +60,7 @@ DirectoryIndex index.php
         # When mod_rewrite is not available, we instruct a temporary redirect of
         # the start page to the front controller explicitly so that the website
         # and the generated links can still be used.
-        RedirectMatch 307 ^/$ /index.php/
+        RedirectMatch 307 ^/$ /public/index.php/
         # RedirectTemp cannot be used instead
     </IfModule>
 </IfModule>
