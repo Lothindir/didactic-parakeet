@@ -4,6 +4,37 @@
 
 {% block body %}
 
-{{ form(addBookForm) }}
+<div class="text-3xl mt-12 mx-auto">
+    Ajouter un livre :
+</div>
 
-{% endblock %}
+        {{ form_start(addBookForm, {'attr': {'class': 'block text-gray-700 text-center w-96 text-md font-bold mt-10 mx-auto'}}) }}
+        
+		{{ form_row(addBookForm.Title, {'attr': {'class': 'ml-4 mb-2 shadow w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+        
+        {{ form_row(addBookForm.ExtractLink, {'attr': {'class': 'ml-4 mb-2 shadow w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+
+        {{ form_row(addBookForm.Summary, {'attr': {'class': 'ml-4 mb-2 inline shadow w-full appearance-none border rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+
+        {{ form_row(addBookForm.AuthorLastName, {'attr': {'class': 'ml-4 mb-2 shadow w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+
+        {{ form_row(addBookForm.AuthorFirstName, {'attr': {'class': 'ml-4 mb-2 shadow w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+
+        {{ form_row(addBookForm.Editor, {'attr': {'class': 'ml-4 mb-2 shadow w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+
+        {{ form_row(addBookForm.NumberPages, {'attr': {'class': 'ml-2 mb-4 w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+
+        {{ form_row(addBookForm.ReleaseDate, {'attr': {'class': 'ml-2 mb-4 shadow w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+
+        {{ form_row(addBookForm.Category, {'attr': {'class': 'ml-4 mb-2 shadow w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+
+        {{ form_row(addBookForm.CoverImage.CoverImageURL, {'attr': {'class': 'ml-4 mb-2 shadow w-full appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+
+        {{ form_row(addBookForm.CoverImage.CoverImageFile, {'attr': {'class': 'ml-4 mb-4 text-center shadow w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'}}) }}
+
+        {{ form_row(addBookForm.Submit, {'attr': {'class': 'btn mb-4 bg-blue-parakeet hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'}}) }}
+
+		{{ form_end(addBookForm) }}
+        
+        {{ form(addBookForm) }}
+	{% endblock %}
