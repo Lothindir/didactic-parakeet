@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/Lothindir/didactic-parakeet#readme",
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.28.0",
+    "@symfony/webpack-encore": "^4.6.1",
     "autoprefixer": "^9.6.1",
     "core-js": "^3.0.0",
     "postcss-loader": "^3.0.0",
